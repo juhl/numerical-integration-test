@@ -6,7 +6,7 @@ App = function() {
     // Spring Coefficients
     var m = 1;
     var L = 10;
-    var w = 12;
+    var w = 16;
 
     function main() {
         canvas = document.getElementById("canvas");
@@ -71,9 +71,9 @@ App = function() {
             break;
         case 3: integrateVerlet(f, h);
             break;
-        case 4: integrateImplicit(f, h);
+        case 4: integrateSemiImplicit(f, h);        
             break;
-        case 5: integrateSemiImplicit(f, h);
+        case 5: integrateImplicit(f, h);
             break;
         }
     }
@@ -113,21 +113,21 @@ App = function() {
     }
 
     function integrateVerlet(f, h) {        
-        var a = -w * w * (f.x - L) / m;        
+        var a = -w * w * (f.x - L) / m;
         var x = 2 * f.x - f.v + h * h * a;
-        f.v = f.x;
+        f.v = f.x; // This is a previous position not a velocity
         f.x = x;
-    }
-
-    function integrateImplicit(f, h) {     
-        var wwh = w * w * h;
-        f.v = (f.v - wwh * f.x + wwh * L) / (1 + wwh * h);
-        f.x = f.x + f.v * h;
     }
 
     function integrateSemiImplicit(f, h) {
         var a = -w * w * (f.x - L) / m;
         f.v = f.v + a * h;
+        f.x = f.x + f.v * h;
+    }
+
+    function integrateImplicit(f, h) {     
+        var wwh = w * w * h;
+        f.v = (f.v - wwh * f.x + wwh * L) / (1 + wwh * h);
         f.x = f.x + f.v * h;
     }
 
