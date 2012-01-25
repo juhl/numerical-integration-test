@@ -29,7 +29,12 @@ App = function() {
         var h = 1 / 30;
 
         // Initial values
-        var f = { x: 100, v: 0 };
+        var f = { x: 100, v: 0 };        
+        if (method == 3) { // verlet
+            integrateRK4(f, h);
+            f.x = 100;
+            f.v = f.x; // previous position
+        }
 
         ctx.save();
         ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -39,6 +44,7 @@ App = function() {
         ctx.beginPath();
 
         integrate(f, h);
+
         ctx.moveTo(0, f.x);
 
         for (var x = 1; x < 800; x++) {
@@ -63,10 +69,12 @@ App = function() {
             break;
         case 2: integrateRK4(f, h);
             break;
-        case 3: integrateImplicit(f, h);
+        case 3: integrateVerlet(f, h);
             break;
-        case 4: integrateSemiImplicit(f, h);
-            break;            
+        case 4: integrateImplicit(f, h);
+            break;
+        case 5: integrateSemiImplicit(f, h);
+            break;
         }
     }
 
@@ -104,7 +112,14 @@ App = function() {
         f.v = f.v + a * h;
     }
 
-    function integrateImplicit(f, h) {
+    function integrateVerlet(f, h) {        
+        var a = -w * w * (f.x - L) / m;        
+        var x = 2 * f.x - f.v + h * h * a;
+        f.v = f.x;
+        f.x = x;
+    }
+
+    function integrateImplicit(f, h) {     
         var wwh = w * w * h;
         f.v = (f.v - wwh * f.x + wwh * L) / (1 + wwh * h);
         f.x = f.x + f.v * h;
