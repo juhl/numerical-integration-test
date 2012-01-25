@@ -18,7 +18,7 @@
         <canvas width="800" height="480" id="canvas"></canvas>        
       </div>
       <div id="ui">
-        Method
+        Method:
         <select name="Method" onchange="App.onchanged_method(this.selectedIndex);">
           <option selected value="Explicit">Explicit
           <option value="Mid-Point">Mid-Point
@@ -27,6 +27,8 @@
           <option value="Semi-Implicit">Semi-Implicit
           <option value="Implicit">Implicit
         </select>
+        Frequency:
+        <input type="range" min="0" max="4" value="2.5" step="0.02" onchange="App.onchanged_frequency(this.value)" />
       </div>
     </div>
   </div>

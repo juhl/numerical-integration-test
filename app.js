@@ -6,7 +6,7 @@ App = function() {
     // Spring Coefficients
     var m = 1;
     var L = 10;
-    var w = 16;
+    var w = 2 * Math.PI * 2.5;
 
     function main() {
         canvas = document.getElementById("canvas");
@@ -58,6 +58,11 @@ App = function() {
 
     function onchanged_method(value) {
         method = value;
+        updateScreen();
+    }
+
+    function onchanged_frequency(hz) {
+        w = 2 * Math.PI * hz;
         updateScreen();
     }
 
@@ -132,6 +137,7 @@ App = function() {
     }
 
     return { main: main, 
-        onchanged_method: onchanged_method 
+        onchanged_method: onchanged_method,
+        onchanged_frequency: onchanged_frequency
     };
 } ();
