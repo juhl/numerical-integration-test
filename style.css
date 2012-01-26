@@ -16,10 +16,21 @@ div#screen {
   height: 480px;
   background-color: white;
 }
-div#ui {
-  margin: 4px auto;
+div#toolbar {
+  padding-top: 4px;
   text-align: center;
   vertical-align: middle;
+  display: inline-block;
+}
+div#toolbar .combo {
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+}
+div#toolbar .slider {
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
 }
 header {
   padding-top: 0px;

@@ -17,18 +17,22 @@
       <div id="screen">
         <canvas width="800" height="480" id="canvas"></canvas>        
       </div>
-      <div id="ui">
+      <div id="toolbar">        
         Method:
-        <select name="Method" onchange="App.onchanged_method(this.selectedIndex);">
-          <option selected value="Explicit">Explicit
-          <option value="Mid-Point">Mid-Point
-          <option value="RK4">RK4
-          <option value="Verlet">Verlet
-          <option value="Semi-Implicit">Semi-Implicit
-          <option value="Implicit">Implicit
-        </select>
+        <div class="combo">          
+          <select name="Method" onchange="App.onchanged_method(this.selectedIndex);">
+            <option selected value="Explicit">Explicit
+            <option value="Mid-Point">Mid-Point
+            <option value="RK4">RK4
+            <option value="Verlet">Verlet
+            <option value="Semi-Implicit">Semi-Implicit
+            <option value="Implicit">Implicit
+          </select>
+        </div>        
         Frequency:
-        <input type="range" min="0" max="4" value="2.5" step="0.02" onchange="App.onchanged_frequency(this.value)" />
+        <div class="slider">          
+          <input type="range" min="0" max="4" value="2.5" step="0.02" onchange="App.onchanged_frequency(this.value)" />
+        </div>
       </div>
     </div>
   </div>
