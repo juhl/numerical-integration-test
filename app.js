@@ -84,30 +84,30 @@ App = function() {
     }
 
     function integrateExplicit(f, h) {
-        var a = -w * w * (f.x - L) / m;
+        var a = -w * w * (f.x - L);
         f.x = f.x + f.v * h;
         f.v = f.v + a * h;
     }
 
     function integrateMidPoint(f, h) {
-        var a = -w * w * (f.x - L) / m;
+        var a = -w * w * (f.x - L);
         v_half = f.v + a * h * 0.5;
         f.x = f.x + v_half * h;
-        a = -w * w * (f.x - L) / m;
+        a = -w * w * (f.x - L);
         f.v = f.v + a * h;
     }
 
     function integrateRK4(f, h) {
-        var a1 = -w * w * (f.x - L) / m;
+        var a1 = -w * w * (f.x - L);
         var v1 = f.v;
 
-        var a2 = -w * w * (f.x + v1 * h * 0.5 - L) / m;
+        var a2 = -w * w * (f.x + v1 * h * 0.5 - L);
         var v2 = f.v + a1 * h * 0.5;
 
-        var a3 = -w * w * (f.x + v2 * h * 0.5 - L) / m;
+        var a3 = -w * w * (f.x + v2 * h * 0.5 - L);
         var v3 = f.v + a2 * h * 0.5;
         
-        var a4 = -w * w * (f.x + v3 * h - L) / m;
+        var a4 = -w * w * (f.x + v3 * h - L);
         var v4 = f.v + a3 * h;
 
         var v = (v1 + 2 * v2 + 2 * v3 + v4) / 6;
@@ -117,15 +117,15 @@ App = function() {
         f.v = f.v + a * h;
     }
 
-    function integrateVerlet(f, h) {        
-        var a = -w * w * (f.x - L) / m;
+    function integrateVerlet(f, h) {
+        var a = -w * w * (f.x - L);
         var x = 2 * f.x - f.v + h * h * a;
         f.v = f.x; // This is a previous position not a velocity
         f.x = x;
     }
 
     function integrateSemiImplicit(f, h) {
-        var a = -w * w * (f.x - L) / m;
+        var a = -w * w * (f.x - L);
         f.v = f.v + a * h;
         f.x = f.x + f.v * h;
     }
