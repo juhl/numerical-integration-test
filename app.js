@@ -6,7 +6,7 @@ App = function() {
     // Spring Coefficients
     var m = 1;
     var L = 10;
-    var w = 2 * Math.PI * 2.5;
+    var w = 2 * Math.PI * 8;
 
     function main() {
         canvas = document.getElementById("canvas");
@@ -22,11 +22,13 @@ App = function() {
         ctx.scale(1, -1);        
 
         updateScreen();
+
+        document.getElementById("frequency").value = w / (2 * Math.PI);
     }
 
     function updateScreen() {
         // Time interval
-        var h = 1 / 30;
+        var h = 1 / 800;
 
         // Initial values
         var f = { x: 100, v: 0 };        
@@ -64,6 +66,8 @@ App = function() {
     function onchanged_frequency(hz) {
         w = 2 * Math.PI * hz;
         updateScreen();
+
+        document.getElementById("frequency").value = hz;
     }
 
     function integrate(f, h) {
