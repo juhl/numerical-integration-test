@@ -5,6 +5,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>Numerical Integration Test</title>
 <link rel="stylesheet" type="text/css" href="style.css">
+<script type="text/javascript" src="app.js"></script>
 </head>
 
 <body>
@@ -19,28 +20,27 @@
       <div id="screen">
         <canvas width="800" height="480" id="canvas"></canvas>        
       </div>
-      <div id="toolbar">        
-        Method:
-        <div class="combo">          
-          <select name="Method" onchange="App.onchanged_method(this.selectedIndex);">
-            <option selected value="Explicit">Explicit
-            <option value="Mid-Point">Mid-Point
-            <option value="RK4">RK4
-            <option value="Verlet">Verlet
-            <option value="Semi-Implicit">Semi-Implicit
-            <option value="Implicit">Implicit
-          </select>
-        </div>
-        Frequency(hz):
-        <div class="slider">
-          <input type="text" id="frequency" readonly="true" size="1" />
-          <input type="range" min="0" max="120" value="8" style="width:200px" onchange="App.onchanged_frequency(this.value)" />
-        </div>
+      <div id="toolbar">
+        <ul>
+          <li>
+            <label for="method">Method:</label>
+            <select name="method" onchange="App.onchanged_method(this.selectedIndex);">
+              <option selected value="Explicit">Explicit
+              <option value="Mid-Point">Mid-Point
+              <option value="RK4">RK4            
+              <option value="Implicit">Implicit
+              <option value="Semi-Implicit">Semi-Implicit
+              <option value="Verlet">Verlet
+            </select>
+          </li>
+          <li>
+            <label for="freq">Frequency(hz):</label>
+            <input type="text" id="frequency" readonly="true" style="width:24px" />
+            <input type="range" min="0" max="120" value="8" style="width:200px" onchange="App.onchanged_frequency(this.value)" />        
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
-  
-  <script type="text/javascript" src="app.js"></script>
-  <script type="text/javascript">App.main();</script>
+  </div>  
 </body>
 </html>
