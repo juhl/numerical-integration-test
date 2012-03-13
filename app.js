@@ -37,7 +37,8 @@ App = function() {
 		// Initial values
 		var f = { x: t0Length, v: 0 };        
 		if (method == 5) { // verlet
-			integrateRK4(f, h);
+			//integrateRK4(f, h);
+			f.x = t0Length;
 			f.v = f.x; // previous position
 		}		
 
