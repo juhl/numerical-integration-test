@@ -16,7 +16,7 @@
 
     <div id="content">
       This graph represent the numerical integration of pure oscillation function in below equation.
-      <p><img src="eq.png"></img></p>
+      <p><img src="http://mathurl.com/6p9lh7l.png"></img></p>
 
       <div id="screen">
         <canvas width="800" height="480" id="canvas"></canvas>        
@@ -24,7 +24,7 @@
       <div id="toolbar">
         <ul>
           <li>
-            <label for="method">Method:</label>
+            <label for="method">Integration Method:</label>
             <select name="method" onchange="App.onchanged_method(this.selectedIndex);">
               <option selected value="Explicit">Explicit
               <option value="Mid-Point">Mid-Point
@@ -33,11 +33,16 @@
               <option value="Semi-Implicit">Semi-Implicit
               <option value="Verlet">Verlet
             </select>
-          </li>
+          </li>          
           <li>
             <label for="freq">Frequency(hz):</label>
             <input type="text" id="frequency" readonly="true" style="width:24px" />
             <input type="range" min="0" max="120" value="8" style="width:200px" onchange="App.onchanged_frequency(this.value)" />        
+          </li>
+          <li>
+            <label for="dampingRatio">Damping Ratio:</label>
+            <input type="text" id="dampingRatio" readonly="true" style="width:24px" />
+            <input type="range" min="0" max="1" step="0.01" value="0" style="width:200px" onchange="App.onchanged_dampingRatio(this.value)" />        
           </li>
         </ul>
       </div>
