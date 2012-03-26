@@ -3,6 +3,7 @@ App = function() {
 	var ctx;
 	var method = 0;
 
+	// Spring Coefficients
 	var m = 1;
 	var L = 10;
 	var frequencyHz = 8;
