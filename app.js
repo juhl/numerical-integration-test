@@ -2,14 +2,14 @@ App = function() {
 	var canvas;
 	var ctx;
 	var method = 0;
-
-	// Spring Coefficients
+	
 	var m = 1;
 	var L = 10;
 	var frequencyHz = 8;
 	var dampingRatio = 0;
 	var w;
 	var z;
+
 	var t0Length = 80;
 
 	function main() {
